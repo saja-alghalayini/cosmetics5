@@ -1,0 +1,165 @@
+body{
+    margin: 0;
+    background-color: #eaeaea;
+}
+
+nav,.tab1, .tab2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+nav{
+    padding: 0;
+    font-family: sans-serif;
+    background-color: white;
+}
+
+/* .tab1, .tab2{
+
+} */
+
+.tab1 a, .tab2 a{
+    display: block;
+    color: #17868e;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.board{
+    background-color: white;
+    width: 75%;
+    margin: 30px auto;
+    padding: 30px 60px;
+}
+
+.parent{
+    display: flex;
+    padding: 20px;
+}
+
+.name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.side2{
+    border: 2px solid rgb(78, 78, 78);
+
+}
+
+.side1{
+    box-sizing: border-box;
+    width: 50%;
+    margin-right: 10%;
+    padding: 30px;
+}
+
+.first, .last{
+    padding: 5px;
+    font-size: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* .name input{
+    font-size: 20px;
+    width: 95%;
+    padding: 5px;
+    box-sizing: border-box;
+
+} */
+
+.side2{
+    box-sizing: border-box;
+    width: 40%; 
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.num{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.num input{
+    font-size: 20px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.mail{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.mail input{
+    font-size: 20px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.cou{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.cou input{
+    font-size: 20px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.town{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.town input{
+    font-size: 20px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.tall{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.tall input{
+    font-size: 20px;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.submit{
+    cursor: pointer;
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px 25px;
+    font-size: 18px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+th{
+    padding: 20px 0;
+}
+
+td{
+    border-top: 1px solid rgb(140, 140, 140);
+    border-bottom: 1px solid rgb(140, 140, 140);
+    padding: 20px 0;
+}
