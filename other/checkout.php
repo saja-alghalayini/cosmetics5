@@ -76,22 +76,28 @@
                 <table style="font-family: sans-serif;">
                     <tr>
                         <th style="text-align: left;">Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
                         <th style="text-align: right;">Subtotal</th>
                     </tr>
 
                     <tr>
                         <td>Product1</td>
+                        <td style="text-align: center;">1</td>
+                        <td style="text-align: center;">16$</td>
                         <td style="text-align: right;">16$</td>
                     </tr>
 
                     <tr>
                         <td>Product2</td>
+                        <td style="text-align: center;">1</td>
+                        <td style="text-align: center;">30$</td>
                         <td style="text-align: right;">30$</td>
                     </tr>
 
                     <tr>
                         <th style="text-align: left;">Total</th>
-                        <th style="text-align: right;">46$</th>
+                        <th style="text-align: right;"colspan="3">46$</th>
                     </tr>
                 </table>
                 <div>
