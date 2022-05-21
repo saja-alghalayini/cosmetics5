@@ -178,5 +178,32 @@ if(isset($_POST["submit"])) {
     <!-- Section: Contact v.1 -->
     
       </div>
+
+      <footer>
+    <div id="footerdiv">
+        <div class="col-3">
+            <img src="./Images/logo.png">
+        </div>
+        <div class="col-3">
+            <h1 style="text-align: center;">Stay In Touch</h1><br>
+            <h2 style="text-align: center;"></h2>
+            <p style="text-align: center;" >
+            <a href="https://www.facebook.com/sephora/" target="_blank" ><i class="fa-brands fa-facebook"style="display: inline;"></a></i>
+            <a href="https://www.instagram.com/sephora/" target="_blank" ><i class="fa-brands fa-instagram"style="display: inline;"></a></i>
+            <a href="https://www.linkedin.com/company/sephora/" target="_blank" ><i class="fa-brands fa-linkedin"style="display: inline;"></a></i>
+            <br>
+            <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
+        </div>
+        <div class="col-3">
+        <h2>Our Website</h2>
+       
+<p> You'll find that all of our products are made of organic ingredients 
+    This means that our products are free of nanoparticles, parabens,
+    or other harmful or synthetic chemicals that could harm your skin.
+ <b>"Our products are not tested on animals"<b>
+</p>
+    </div>
+            </div>
+    </footer>
 </body>
 </html>

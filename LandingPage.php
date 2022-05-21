@@ -156,7 +156,32 @@ if(!isset($_GET["id"])){
     <!-- //////////////////Footer//////////////////// -->
 
     
-
+    <footer>
+    <div id="footerdiv">
+        <div class="col-3">
+            <img src="./Images/logo.png">
+        </div>
+        <div class="col-3">
+            <h1 style="text-align: center;">Stay In Touch</h1><br>
+            <h2 style="text-align: center;"></h2>
+            <p style="text-align: center;" >
+            <a href="https://www.facebook.com/sephora/" target="_blank" ><i class="fa-brands fa-facebook"style="display: inline;"></a></i>
+            <a href="https://www.instagram.com/sephora/" target="_blank" ><i class="fa-brands fa-instagram"style="display: inline;"></a></i>
+            <a href="https://www.linkedin.com/company/sephora/" target="_blank" ><i class="fa-brands fa-linkedin"style="display: inline;"></a></i>
+            <br>
+            <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
+        </div>
+        <div class="col-3">
+        <h2>Our Website</h2>
+       
+<p> You'll find that all of our products are made of organic ingredients 
+    This means that our products are free of nanoparticles, parabens,
+    or other harmful or synthetic chemicals that could harm your skin.
+ <b>"Our products are not tested on animals"<b>
+</p>
+    </div>
+            </div>
+    </footer>
   </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
