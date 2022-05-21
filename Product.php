@@ -3,6 +3,8 @@ include_once 'connect.php';
 $pro_id= $_GET["pro_id"];
 if(isset($_GET["id"])){
     $id= $_GET["id"];
+}else{
+    $id='';
 }
 
 $query= "SELECT * FROM products INNER JOIN categories WHERE products.category_id = categories.category_id AND id='$pro_id';";
@@ -104,17 +106,40 @@ if(isset($_GET["id"])){
         
             <br>
         <div id="parent">
+            <!--  -->
+            <?php
+            if($row['sale_status']==1){
+                $pbs= floor(($row['price'])/((100-$row['sale_pre'])/100)); //// price before sale 
+               echo '
             <div>
-                <img src="<?php echo $row['image']?>" alt="Product">
+                <img src="'.$row['image'].'" alt="Product">
             </div>
 
             <div>
-                <h1><?php echo $row['name']?></h1>
-                <h4>Category: <?php echo $row['category_name']?></h4>
-                <h1 id="price">$<?php echo $row['price']?></h1>
-                <p><?php echo $row['description']?></p><br>
-                <a href='Product.php?pro_id=<?php echo $pro_id?>&id=<?php echo $id ?>&add=1' id="addtocart">Add to Cart</a>
+                <h1>'.$row['name'].'</h1>
+                <h4 style="color:red;">Category:'.$row['category_name'].'</h4>
+                <p id = "price_befor">'.$pbs.'</p>
+                <h1 id="price" style="color:red;">$'.$row['price'].'</h1>
+                <p>'.$row['description'].'</p><br>
+                <a href="Product.php?pro_id='.$pro_id.'&id='.$id.'&add=1" id="addtocart" style="background:red;">Add to Cart</a>
+            </div>';
+
+            }
+            else{
+            echo '
+            <div>
+                <img src="'.$row['image'].'" alt="Product">
             </div>
+
+            <div>
+                <h1>'.$row['name'].'</h1>
+                <h4>Category:'.$row['category_name'].'</h4>
+                <h1 id="price">$'.$row['price'].'</h1>
+                <p>'.$row['description'].'</p><br>
+                <a href="Product.php?pro_id='.$pro_id.'&id='.$id.'&add=1" id="addtocart">Add to Cart</a>
+            </div>';}
+            ?>
+            <!--  -->
         </div> 
 
         <hr>
@@ -143,7 +168,7 @@ if(isset($_GET["id"])){
             <h3>Your review*</h3>
             <form method="post">
             <textarea name="comment"></textarea>
-            <input type="submit" name="submitrev">
+            <input type="submit" name="submitrev" id="addtocart" style="width: 20%; height: 50px; padding: 0;">
             <form>
         </div>
 
