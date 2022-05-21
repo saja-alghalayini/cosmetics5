@@ -75,21 +75,7 @@ $Confirm= $_POST['Confirm'];
         $checkdatee= false; 
     }
 
-// if(!empty($_SESSION["usersData"])){
-// foreach ($_SESSION["usersData"] as $key => $value){
-//     if($email== $value["email"]){
-//         $checkEm= false; 
-//         $e= '<style type="text/css">
-//         #i7, #seven1 {
-//             display: inline;
-//         }
-//         </style>';
-       
-//     }else{
-//         $checkEm= true;  
-//     }}}else{
-//         $checkEm= true;  
-//     }
+
     $filter2= "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/";
     
     if (preg_match($filter2,$email)) {
@@ -155,7 +141,18 @@ $Confirm= $_POST['Confirm'];
        
         
     }
-    else if (strpos($pass, ' ')) {
+    else if (!preg_match('@[0-9]@', $password)) {
+      
+        $f= '<style type="text/css">
+        #i8, #eight6{
+            display: inline;
+        }
+        </style>';
+        
+        $checkpass= false;
+       
+       
+    }else if (strpos($pass, ' ')) {
       
         $f= '<style type="text/css">
         #i8, #eight5{
@@ -207,10 +204,7 @@ if($checkFN && $checkMobile && $checkEmaile && $checkdate && $checkpass && $chec
 }
 
 mysqli_close($conn);
-// $date_create=date("H:i:s-m/d/y"); //Date Create
 
-// $arr= ["email"=>  $email, "mobile"=>$mobile, "name"=> $fname, "password"=>$pass, "birthDate"=> $date, "Creation_Date"=>$date_create, "Last-Login-Date" =>"haven't login yet"];
-// array_push($_SESSION["usersData"],$arr);
 echo "<script language='javascript'>
 setTimeout(() => {
     window.location.href = 'login.php'; 
@@ -269,14 +263,14 @@ setTimeout(() => {
              
               <input name='lname' id="last-name" type="text"  required="true" placeholder='last name'class='na2'>
               
-              <img src="../img/icon-error (1).svg" class="error-icon" alt="" id="i1">
+              <img src="./img/icon-error (1).svg" class="error-icon" alt="" id="i1">
               <p class="error-text" id ='one'>Name field required only alphabet characters</p> 
               <?php if(isset($b)){echo $b;}?>             
             </div>
             <div class="field-group">
                 <label for="Mobile">Mobile Numde</label>
                 <input name='Mobile' id="Mobile" type="number"  required="true">
-                <img src="../img/icon-error (1).svg" class="error-icon" alt="" id='i5'>
+                <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i5'>
                 <p class="error-text" id='five'>Mobile Numde must be 14 diget</p> 
                 <?php if(isset($c)){echo $c;}?>              
               </div>
@@ -290,7 +284,7 @@ setTimeout(() => {
             <div class="field-group">
               <label for="Email">Email Address</label>
               <input name='Email' id="Email" value="" type="email"  required="true">
-              <img src="../img/icon-error (1).svg" class="error-icon" alt="" id='i7'>
+              <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i7'>
               <p class="error-text" id='seven'>Looks like this is not email</p>
               <p class="error-text" id='seven1'>this email already sign up</p>
               <?php if(isset($e)){echo $e;}?>               
@@ -298,18 +292,19 @@ setTimeout(() => {
             <div class="field-group">
               <label for="password">Password </label>
               <input name='password' id="password" value="" type="password"  required="true">
-              <img src="../img/icon-error (1).svg" class="error-icon" alt="" id='i8'>
+              <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i8'>
               <p class="error-text" id='eight'>password syntax is Incorrect'</p> 
               <p class="error-text" id='eight2'>first letter must be capital</p>  
               <p class="error-text" id='eight3'>password must contain 2 numbers at least</p> 
               <p class="error-text" id='eight4'>password must contain  at least 1 special character</p> 
               <p class="error-text" id='eight5'>password can not contain a space</p> 
+              <p class="error-text" id='eight6'>password lenght should be 8 or more</p> 
               <?php if(isset($f)){echo $f;}?>              
             </div>
             <div class="field-group">
                 <label for="Confirm">Confirm Password</label>
                 <input name='Confirm' id="Confirm" value="" type="password"  required="true">
-                <img src="../img/icon-error (1).svg" class="error-icon" alt="" id='i9'>
+                <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i9'>
                 <p class="error-text" id='nine'>Password not matching</p> 
                 <?php if(isset($g)){echo $g;}?>              
               </div>
