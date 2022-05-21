@@ -133,7 +133,6 @@ $contact = '../contactUS.php?id=' . $id;
                     $_SESSION["total"] = $sum;
                     $_SESSION["id"] = $id;
                     echo '<input type="hidden" value="' . $id . '" name="id">';
-                    print_r($row);
                     ?>
 
                     <tr>

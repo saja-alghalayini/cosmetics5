@@ -41,8 +41,9 @@ body{
         background-color: #0F848C;
         border: none;
         color: #F0F8FF;
-        width: 150px;
-        height: 35px;
+        width:fit-content;
+        padding: 7px 40px;
+        text-decoration: none;
         margin-top: 10%;
         margin-left: 70%;
       }

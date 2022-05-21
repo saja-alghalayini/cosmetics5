@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
         </style>';
 
         $checkpass = false;
-    } else if (!preg_match('@[0-9]@', $password)) {
+    } else if (strlen($pass) < 8) {
 
         $f = '<style type="text/css">
         #i8, #eight6{

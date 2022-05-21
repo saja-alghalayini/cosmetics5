@@ -115,7 +115,7 @@ if (!isset($_GET["id"])) {
           <h4 class="title mb-4 display-4 "><span class="custom"> Beauty</span> Care Team </h4>
           <p class="text-muted mb-0 cus">We are a team of five people from the Orange Academy for Programming, Aqaba branch, and this is our fifth project; we were able to build this website for four continuous days without interruption using the technology that we learned during three months of this program, 4 of our team members do not have any background IT knowledge, so we are proud of this achievement that we have done. We are delighted with the enjoyable time we spent together completing this excellent site, and we believe that it will be a new step for our progress in this field.</p>
 
-          <button class="butt">Explor</button>
+          <a href="<?php echo $homepath; ?>" style="display: block;" class="butt">Explor</a>
         </div>
       </div>
       <!--end col-->

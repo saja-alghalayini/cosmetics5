@@ -13,7 +13,11 @@ if (isset($_POST['submit'])){
     if ($result_check > 0) {
          while ($row=mysqli_fetch_assoc($result)) {
           if($Email== ($row['email'])&& $Password== $row['pass']){
-            header('location:LandingPage.php?id='.$row["user_id"].'');
+           if($row['is_admin']==1){
+            header('location:AdminDashboard.php');
+           }else{
+
+            header('location:LandingPage.php?id='.$row["user_id"].'');}
 
           }else if ($Email !== ($row['email'])){
            
@@ -30,45 +34,8 @@ if (isset($_POST['submit'])){
                     }
                     </style>';
             
-            
             }
-//   foreach ($_SESSION["usersData"] as $key => $value){
-//     if($Email== $value["email"]&& $Password== $value["password"]){
-//              $_SESSION["userEmail"]= $value["email"];
-//              $_SESSION["userName"]= $value["name"];
-//              $_SESSION["userMobile"]= $value["mobile"];
-//              $_SESSION["usersData"][$key]["Last-Login-Date"]= date("H:i:s-m/d/y"); //Date log in
-//              $_SESSION["usersData"];
-           
-             
-//            header('location:userpage.php');
-//     }  else if ($Email !== $value["email"]){
-//       $wrong1= '<style type="text/css">
-//       #i11, #one1{
-//           display: inline;
-//       }
-//       </style>';
-
-//   } else if ($Password !== $value["password"]){
-//     $wrong2= '<style type="text/css">
-//         #i22, #two2{
-//             display: inline;
-//         }
-//         </style>';
-
-
-// }
-
   }
-
-
-
-
-
-    
-
-
-
 }
 }
 ?>

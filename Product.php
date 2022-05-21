@@ -109,6 +109,11 @@ if (!isset($_GET["id"])) {
         <div id="parent">
             <!--  -->
             <?php
+            if (isset($_GET["id"])) {
+                $ids ='&id='.$_GET["id"];
+            } else {
+                $ids = '';
+            }
             if ($row['sale_status'] == 1) {
                 $pbs = floor(($row['price']) / ((100 - $row['sale_pre']) / 100)); //// price before sale 
                 echo '
@@ -122,7 +127,7 @@ if (!isset($_GET["id"])) {
                 <p id = "price_befor">' . $pbs . '</p>
                 <h1 id="price" style="color:red;">$' . $row['price'] . '</h1>
                 <p>' . $row['description'] . '</p><br>
-                <a href="Product.php?pro_id=' . $pro_id . '&id=' . $id . '&add=1" id="addtocart" style="background:#ef3737;">Add to Cart</a>
+                <a href="Product.php?pro_id=' . $pro_id. $ids . '&add=1" id="addtocart" style="background:#ef3737;">Add to Cart</a>
             </div>';
             } else {
                 echo '
@@ -135,7 +140,7 @@ if (!isset($_GET["id"])) {
                 <h4>Category:' . $row['category_name'] . '</h4>
                 <h1 id="price">$' . $row['price'] . '</h1>
                 <p>' . $row['description'] . '</p><br>
-                <a href="Product.php?pro_id=' . $pro_id . '&id=' . $id . '&add=1" id="addtocart">Add to Cart</a>
+                <a href="Product.php?pro_id=' . $pro_id . $ids . '&add=1" id="addtocart">Add to Cart</a>
             </div>';
             }
             ?>
