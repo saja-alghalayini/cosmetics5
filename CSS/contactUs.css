@@ -1,0 +1,125 @@
+body{
+  margin: 0;
+}
+
+nav,.tab1, .tab2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+nav{
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.text-center {
+  text-align: center!important;
+  color: #17868e;
+}
+
+.mt-2 {
+  margin-top: 0.5rem!important;
+  color: #17868e;
+}
+
+label {
+  display: inline-block;
+  color: #17868e;
+}
+
+/* .tab1, .tab2{
+
+} */
+
+.tab1 a, .tab2 a{
+  display: block;
+  color: #17868e;
+  text-decoration: none;
+  margin: 0 15px;
+}
+ 
+.fa-map-marker-alt:before {
+  content: "\f3c5";
+  color: #17868e;
+}
+
+.fa-phone:before {
+  content: "\f095";
+  color: #17868e;
+}
+.fa-envelope:before {
+  content: "\f0e0";
+  color: #17868e;
+}
+.fa-user:before {
+  content: "\f007";
+  color: #17868e;
+}
+
+.fa-tag:before {
+  content: "\f02b";
+  color: #17868e;
+}
+
+.fa-pencil-alt:before, .fa-pencil:before {
+  content: "\f303";
+  color: #17868e;
+}
+
+.map-container-section {
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+  }
+  .map-container-section iframe {
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+  }
+  #footerdiv{
+    background-color: #000;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 0;
+}
+
+footer img {
+    width: 100%;
+}
+#footerdiv a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    margin: 1% 0;
+}
+.fa-brands {
+    font-size: 50px;
+    margin: 0 2%;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-right: 50px;
+  background-color: #dae0e065;
+}
+
+nav a{
+  color: #063e42;
+  text-decoration: none;
+  font-family: sans-serif;
+  margin: 20px;
+}

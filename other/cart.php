@@ -1,3 +1,45 @@
+<?php
+include_once '../connect.php';
+session_start();
+$e=0;
+$arr_q=[];
+if(isset($_GET['save'])){
+
+    foreach (array_keys($_GET) as $key) {
+        $str = $key;
+        $pattern = "/quan/i";
+        if(preg_match($pattern, $str)){
+            $e++;
+            $arr_q[] = $key;
+        } 
+    }
+
+}
+$id= $_GET["id"];
+
+if(isset($_GET['del_pro'])){
+    $del_pro= $_GET['del_pro'];
+    $query2= "DELETE FROM cart WHERE product_id=$del_pro AND user_id=$id;";
+    $result2= mysqli_query($conn, $query2);
+}
+
+
+
+$query="SELECT * FROM cart INNER JOIN products WHERE cart.product_id=products.id  AND user_id=$id;";
+$result= mysqli_query($conn, $query);
+$resultcheck = mysqli_num_rows($result);
+                    
+if(isset($_POST['checkout'])){
+    header("location:checkout.php");
+}
+
+$homepath= '../landingpage.php?id='.$id;
+$shoppath= '../ProductsPage.php?id='.$id;
+$categorypath= '../CategoriesPage.php?id='.$id.'&';
+$cartpath= '#';
+$about= '../aboutUS.php?id='.$id;
+$contact= '../contactUS.php?id='.$id;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,22 +51,32 @@
     <title>Cart</title>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <img src="./images/logo.png" width="200px" alt="">
-        </div>
-        <div class="tab1">
-            <a href="">HOME</a>
-            <a href="">PRODUCTS</a>
-            <a href="">CART</a>
-            <a href="">CONTACT US</a>
-            <a href="">ABOUT US</a>
-        </div>
-        <div class="tab2">
-            <a href="">LOGIN</a>
-            <a href="">REGISTER</a>
-        </div>
-    </nav>
+<nav style="display: flex;">
+      
+      <div>
+          <img width="200px" src="./Images/logo.png">
+      </div>
+
+      <div>
+      <a href="<?php echo $homepath; ?>">Home</a>
+          <a href="<?php echo $shoppath; ?>">Shop</a>
+          <a href="<?php echo $cartpath; ?>">Cart</a>
+          <a href="<?php echo $about; ?>">About Us</a>
+          <a href="<?php echo $contact; ?>">Contact Us</a>
+      </div>
+      
+      <div>
+        <?php
+        if(!isset($_GET["id"])){
+          echo '<a href="login.php">Login</a>
+                <a href="signup.php">Register</a>';
+        }else{
+          echo '<a href="../userpage.php?id='.$id.'">Account</a>';
+          echo '<a href="../LandingPage.php">Log Out</a>';
+        }
+          ?>
+      </div>
+  </nav>
 
     <div class="board">
         <h1 class="bhead">CART</h1>
@@ -37,53 +89,70 @@
                     <th>QUANTITY</th>
                     <th>SUBTOTAL</th>
                 </tr>
+                <?php
+                $sum=0;
+                if($resultcheck > 0)
+                    {
+                    $i=0;
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        if(isset($_GET['save'])){
+                            for($r=0; $r < $e; $r++){
+                                $index= "quan".$i;
+                                $q=$_GET[$index];
+                                /**************** */
+                                $index1= "product_id".$i;
+                                $pro_id=$_GET[$index1];
 
-                <tr>
+                                $sql = "UPDATE cart SET quantity=$q WHERE product_id=$pro_id AND user_id=$id;";
+                                mysqli_query($conn, $sql);
+                            }
+                        }else{
+                            $q = $row['quantity'];
+                        };
+
+                    echo '<form action="" method="get"><tr>
                     <td style="position: relative;">
                         <div style="left: 0; margin: auto; display: flex; justify-content: space-around; align-items: center; width: 200px;">
-                            <i style="position: absolute; left: 10px;" class="fa-solid fa-circle-xmark"></i>
-                            <img src="./images/c1.jpg" width="50px" alt="">
-                            <span>product1</span>
+                            <a href="cart.php?id='.$id.'&del_pro='.$row['id'].'"><i style="position: absolute; left: 10px;" class="fa-solid fa-circle-xmark"></i></a>
+                            <img src=".'.$row['image'].'" width="50px" alt="">
+                            <span>'.$row['name'].'</span>
                         </div>
                     </td>
-                    <td>12$</td>
+                    <td>$'.$row['price'].'</td>
                     <td>
-                        <input type="number" class="num" min="1" value="1" name="" id="">
+                        <input type="hidden" value="'.$row['product_id'].'" name="product_id'.$i.'">
+                        <input type="number" class="num" min="1" value="'.$q.'" name="quan'.$i.'" id="">
                     </td>
-                    <td>12$</td>
-                </tr>
-
-                <tr>
-                    <td style="position: relative;">
-                        <div style="margin: auto; display: flex; justify-content: space-around; align-items: center; width: 200px;">
-                            <i style="position: absolute; left: 10px;"  class="fa-solid fa-circle-xmark"></i>
-                            <img src="./images/c3.jpg" width="50px" alt="">
-                            <span>product2</span>
-                        </div>
-                    </td>
-                    <td>12$</td>
-                    <td>
-                        <input type="number" class="num" min="1" value="1" name="" id="">
-                    </td>
-                    <td>12$</td>
-                </tr>
+                    <td>$'.($row['price']*$row['quantity']).'</td>
+                    </tr>';
+                    $quantity[] = $row['quantity'];
+                    $sum+= ($row['price']*$row['quantity']);
+                    $i++;
+                    }} 
+                    $_SESSION["total"]= $sum;
+                    $_SESSION["id"]= $id;
+                    echo '<input type="hidden" value="'.$id.'" name="id">';
+                    print_r($row);
+                ?>
 
                 <tr>
                     <td colspan="4" style="text-align: center; margin: auto;">
-                        <div class="change">Save Changes</div>
+                        <input type="submit" value="Save Changes" name="save" class="change">
                     </td>
-                </tr>
+                </tr></form>
             </table>
-
+                
                 <div class="total">
-                    <h3>CART TOTAL: 38$</h3>
-                    <div class="change">Checkout</div>
+                    <h3>CART TOTAL: $<?php echo $sum; ?></h3>
+                    <form method="post">
+                        <input type="submit" name="checkout" value="Checkout" class="change">
+                    </form>
                 </div>
             </div>
-
+            
         </div>
     </div>
-
 
 </body>
 </html>

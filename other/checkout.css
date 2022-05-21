@@ -3,28 +3,20 @@ body{
     background-color: #eaeaea;
 }
 
-nav,.tab1, .tab2{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
 nav{
-    padding: 0;
-    font-family: sans-serif;
-    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-right: 50px;
+    background-color: #dae0e065;
 }
 
-/* .tab1, .tab2{
-
-} */
-
-.tab1 a, .tab2 a{
-    display: block;
-    color: #17868e;
+nav a{
+    color: #063e42;
     text-decoration: none;
-    margin: 0 15px;
+    font-family: sans-serif;
+    margin: 20px;
 }
 
 .board{
@@ -48,7 +40,7 @@ nav{
 
 .side2{
     border: 2px solid rgb(78, 78, 78);
-
+    width: 50%;
 }
 
 .side1{
@@ -75,7 +67,7 @@ nav{
 
 .side2{
     box-sizing: border-box;
-    width: 40%; 
+    width: 50%; 
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
@@ -162,4 +154,33 @@ td{
     border-top: 1px solid rgb(140, 140, 140);
     border-bottom: 1px solid rgb(140, 140, 140);
     padding: 20px 0;
+}
+
+.cash{
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+.pop{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(73, 73, 73, 0.568);
+    /* display: fe; */
+}
+
+.mess{
+    padding: 20px;
+    background-color: rgb(120, 116, 135);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+    font-family: sans-serif;
 }

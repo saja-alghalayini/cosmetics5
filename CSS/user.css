@@ -1,0 +1,17 @@
+.gradient-custom {
+    background: radial-gradient(circle at 0.1% 99.8%, rgb(0, 164, 189) 0%, rgb(0, 189, 165) 90%);
+
+    }
+    .btn-primary{
+        background-color: #0F848C;
+        border: none;
+        border-radius: none;
+    }
+    .img-fluid {
+        width: 80px;
+        margin-top: 3rem;
+    }
+
+    .chang1{
+        cursor: pointer;
+    }

@@ -1,0 +1,164 @@
+/* ///////////////HEADER STYLE/////////////// */
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-right: 50px;
+    background-color: #dae0e065;
+}
+
+nav a{
+    color: #063e42;
+    text-decoration: none;
+    font-family: sans-serif;
+    margin: 20px;
+}
+
+header {
+    background-image: url("../Images/Header.jpg");
+    background-repeat:no-repeat ;
+    background-size: cover;
+    height:80vh; 
+    width: 100%;
+    margin-bottom: 200px;
+}
+
+.head{
+    width: fit-content;
+    margin-left: 20%;
+    margin-top: 7%;
+    text-align: center;
+}
+
+
+
+/* ///////////////BODY STYLE/////////////// */
+#categories-h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+#categories{
+    background-image: url("../Images/categories\ background1.jpg");
+    background-repeat:no-repeat ;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 200px;
+}
+/* #categories .button {
+    width:20%;
+    font-size: 20px;
+    text-align: center;
+} */
+
+#discount-h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+#discount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 200px;
+    height: 80vh;
+}
+#discount div {
+    height: 100%;
+}
+/* #discount div img {
+    width: 100%;
+    height: 60%;
+} */
+#discount div h4, #discount div p {
+    text-align: center;
+}
+#discount div p {
+    font-size: 20px;
+}
+.fa-star {
+    color: goldenrod;
+}
+
+#carouselExampleIndicators{
+    margin-bottom: 200px;
+}
+
+
+/* ///////////////FOOTER STYLE/////////////// */
+#footerdiv{
+    background-color: #000;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 0;
+}
+footer img {
+    width: 100%;
+}
+#footerdiv a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    margin: 1% 0;
+}
+.fa-brands {
+    font-size: 50px;
+    margin: 0 2%;
+}
+
+/* ///////////////GENERAL STYLE/////////////// */
+.headerh1{
+    margin-bottom: 40px;
+}
+
+.headerp{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.button{
+    background-color: #0F848C;
+    border: none;
+    padding: 10px 25px;
+    color: white;
+    display: block;
+    width:fit-content;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px auto;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #333;
+    text-decoration: none;
+    color: white;
+}
+
+#price_befor{ 
+    color: gray;
+    font-size: x-large;
+    text-decoration: line-through;
+    margin: 0;
+}
+#price_after{
+    color: red; 
+    font-size:30px;
+    font-weight: bold;
+}
+#dis{
+    background: red;
+    text-align: center;
+    width: 100%;
+    height: 10%;
+}
