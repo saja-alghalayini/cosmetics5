@@ -12,29 +12,25 @@ if (isset($_POST['submit'])){
 
     if ($result_check > 0) {
          while ($row=mysqli_fetch_assoc($result)) {
-          if($Email== ($row['email'])&& $Password== $row['pass']){
-           if($row['is_admin']==1){
-            header('location:AdminDashboard.php');
-           }else{
+          if($Email== ($row['email'])&& $Password== $row['pass'] && $row['is_admin']==0){
+          
 
-            header('location:LandingPage.php?id='.$row["user_id"].'');}
+            header('location:LandingPage.php?id='.$row["user_id"].'');
 
-          }else if ($Email !== ($row['email'])){
+          }else {
            
                   $wrong1= '<style type="text/css">
                   #i11, #one1{
                       display: inline;
                   }
                   </style>';
+                  $wrong2= '<style type="text/css">
+                  #i22, #two2{
+                      display: inline;
+                  }
+                  </style>';
             
-              } else if ($Password !== $row['pass']){
-                $wrong2= '<style type="text/css">
-                    #i22, #two2{
-                        display: inline;
-                    }
-                    </style>';
-            
-            }
+              } 
   }
 }
 }
@@ -83,7 +79,7 @@ if (isset($_POST['submit'])){
         
         <div class="form-container">
           <form  method="post">
-            <h1>LOGIN</h1>
+            <h1 class= "h1">LOGIN</h1>
             <div class="field-group">
           
             <div class="field-group">
@@ -127,7 +123,7 @@ if (isset($_POST['submit'])){
             <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
         </div>
         <div class="col-3">
-        <h2>Our Website</h2>
+        <h1>Our Website</h1>
        
 <p> You'll find that all of our products are made of organic ingredients 
     This means that our products are free of nanoparticles, parabens,

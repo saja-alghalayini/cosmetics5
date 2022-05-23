@@ -3,9 +3,7 @@
 session_start();
 
 
-// if(empty($_SESSION["usersData"])){
-//     $_SESSION["usersData"]= [];
-// }
+
 include_once('connect.php');
 if (isset($_POST['submit'])) {
 
@@ -24,7 +22,7 @@ if (isset($_POST['submit'])) {
 
     $Confirm = $_POST['Confirm'];
 
-
+    
 
 
 
@@ -71,7 +69,27 @@ if (isset($_POST['submit'])) {
 
     $filter2 = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/";
 
-    if (preg_match($filter2, $email)) {
+    $sql="SELECT email FROM user;";
+    $run= mysqli_query($conn,$sql);
+    $resultcheck = mysqli_num_rows($run);
+    if($resultcheck > 0)
+    {
+    while($row = mysqli_fetch_assoc($run)){
+        if($row['email']== $email){
+            $e = '<style type="text/css">
+            #i7, #seven1 {
+                display: inline;
+            }
+            </style>';
+            $checkEmaile = false;
+
+        }
+    }
+}
+
+   
+
+     if (preg_match($filter2, $email)) {
         $checkEmaile = true;
     } else {
         $e = '<style type="text/css">
@@ -166,7 +184,7 @@ if (isset($_POST['submit'])) {
 
 
         if (mysqli_query($conn, $sql)) {
-            echo 'new record created sucessfuly ';
+            echo '';
         } else {
             echo "error:" . $sql . "<br>" . mysqli_error($conn);
         }
@@ -179,7 +197,19 @@ setTimeout(() => {
  }, 3000);
 </script>";
     }
+
+
+    if(!empty($email)) $x1= $email;
+    if(!empty($mobile)) $x2= $mobile;
+    if(!empty($fname)) $x3= $fname;
+    if(!empty($lname)) $x33= $lname;
+    if(!empty($date)) $x4= $date;
+
+
 }
+
+
+
 
 ?>
 
@@ -225,12 +255,12 @@ setTimeout(() => {
 
                 <div class="form-container">
                     <form method="post">
-                        <h1>Sign Up</h1>
+                        <h1 class="h1">Sign Up</h1>
                         <div class="field-group">
                             <label for="first-name">Full Name</label>
-                            <input name='fname' id="first-name" type="text" required="true" placeholder='First name' class='na1'>
+                            <input name='fname' id="first-name" type="text" required="true" placeholder='First name' class='na1' value="<?php if(isset($x3)) echo $x3;?>">
 
-                            <input name='lname' id="last-name" type="text" required="true" placeholder='last name' class='na2'>
+                            <input name='lname' id="last-name" type="text" required="true" placeholder='last name' class='na2' value="<?php if(isset($x33)) echo $x33;?>">
 
                             <img src="./img/icon-error (1).svg" class="error-icon" alt="" id="i1">
                             <p class="error-text" id='one'>Name field required only alphabet characters</p>
@@ -240,7 +270,7 @@ setTimeout(() => {
                         </div>
                         <div class="field-group">
                             <label for="Mobile">Mobile Numde</label>
-                            <input name='Mobile' id="Mobile" type="number" required="true">
+                            <input name='Mobile' id="Mobile" type="number" required="true" value="<?php if(isset($x2)) echo $x2;?>">
                             <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i5'>
                             <p class="error-text" id='five'>Mobile Numde must be 14 diget</p>
                             <?php if (isset($c)) {
@@ -249,7 +279,7 @@ setTimeout(() => {
                         </div>
                         <div class="field-group">
                             <label for="Date"> Date of Birth</label>
-                            <input name='Date' id="Date" type="date" required="true">
+                            <input name='Date' id="Date" type="date" required="true" value="<?php if(isset($x4)) echo $x4;?>">
                             <img src="../img/icon-error (1).svg" class="error-icon" alt="" id='i6'>
                             <p class="error-text" id='six'>age can not be under 16</p>
                             <?php if (isset($d)) {
@@ -258,7 +288,7 @@ setTimeout(() => {
                         </div>
                         <div class="field-group">
                             <label for="Email">Email Address</label>
-                            <input name='Email' id="Email" value="" type="email" required="true">
+                            <input name='Email' id="Email"  type="email" required="true" value="<?php if(isset($x1)) echo $x1;?>">
                             <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i7'>
                             <p class="error-text" id='seven'>Looks like this is not email</p>
                             <p class="error-text" id='seven1'>this email already sign up</p>
@@ -268,7 +298,7 @@ setTimeout(() => {
                         </div>
                         <div class="field-group">
                             <label for="password">Password </label>
-                            <input name='password' id="password" value="" type="password" required="true">
+                            <input name='password' id="password" value="" type="password" required="true" >
                             <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i8'>
                             <p class="error-text" id='eight'>password syntax is Incorrect'</p>
                             <p class="error-text" id='eight2'>first letter must be capital</p>
@@ -319,7 +349,7 @@ setTimeout(() => {
             <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
         </div>
         <div class="col-3">
-        <h2>Our Website</h2>
+        <h1>Our Website</h1>
        
 <p> You'll find that all of our products are made of organic ingredients 
     This means that our products are free of nanoparticles, parabens,

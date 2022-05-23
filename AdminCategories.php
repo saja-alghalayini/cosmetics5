@@ -29,7 +29,7 @@ if(isset($_POST["editcat"])){
 if(isset($_POST["newcat"])){
     $cat_id= $_POST["catid"];
     $newcatname= $_POST["newcatname"];
-    $id= $_POST['userid'];
+    $id= $_POST['catid'];
     $query2= "UPDATE categories SET category_name='$newcatname' WHERE category_id=$cat_id;";
     $run2= mysqli_query($conn , $query2);
     $display= 'none';

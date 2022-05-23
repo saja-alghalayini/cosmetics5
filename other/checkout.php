@@ -9,7 +9,6 @@ $non = "none";
 
 $sql = "SELECT * FROM cart INNER JOIN products ON products.id=cart.product_id AND cart.user_id=$id";
 $query = mysqli_query($conn, $sql);
-// $row = mysqli_fetch_assoc($query);
 $resultcheck = mysqli_num_rows($query);
 
 if (isset($_GET["submit"])) {
@@ -46,7 +45,6 @@ setTimeout(() => {
     window.location.href = '../landingpage.php?id=$id'; 
  }, 3000);
 </script>";
-    // header("location:../landingpage.php?id=$id");
 }
 
 $homepath = '../landingpage.php?id=' . $id;
@@ -55,6 +53,27 @@ $categorypath = 'CategoriesPage.php?id=' . $id . '&';
 $cartpath = 'cart.php?id=' . $id;
 $about = '../aboutUS.php?id=' . $id;
 $contact = '../contactUS.php?id=' . $id;
+
+$sql6 = "SELECT * FROM user WHERE user_id=$id;";
+$result6 = mysqli_query($conn, $sql6);
+
+$first = "null";
+$last = "null";
+$phone = "null";
+$mail = "null";
+
+if ($result6->num_rows > 0) {
+    while ($row6 = mysqli_fetch_assoc($result6)) {
+
+        $first = $row6["first_name"];
+        $last = $row6["last_name"];
+        $phone = $row6["mobile"];
+        $mail = $row6["email"];
+        // $country=$row[""];
+        // $city=$row[""];
+        // $street=$row[""];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -77,32 +96,39 @@ $contact = '../contactUS.php?id=' . $id;
     </div>
     <!-- <img src="../Images/categories background1.jpg" alt=""> -->
     <nav style="display: flex;">
+      
+      <div>
+          <img width="200px" src="./Images/logo.png">
+      </div>
 
-        <div>
-            <img width="200px" src="./Images/logo.png">
-        </div>
+      <div>
+          <a href="<?php echo $homepath; ?>">Home</a>
+          <a href="<?php echo $shoppath; ?>">Shop</a>
+          
+          <a href="<?php echo $about; ?>">About Us</a>
+          <a href="<?php echo $contact; ?>">Contact Us</a>
+      </div>
+      
+      <div>
+        <?php
+        echo '<a href="'.$cartpath.'"><i class="fa-solid fa-cart-shopping"></i></a>';
+        // if(!isset($_GET["id"])){
+        //   echo '<a href="login.php">Login</a>
+        //         <a href="signup.php">Register</a>';
+        // }else{
+          echo '<a href="userpage.php?id='.$_SESSION["id"].'">Account</a>';
+          echo '<a href="LandingPage.php">Log Out</a>';
+        // }
 
-        <div>
-            <a href="<?php echo $homepath; ?>">Home</a>
-            <a href="<?php echo $shoppath; ?>">Shop</a>
-            <a href="<?php echo $cartpath; ?>">Cart</a>
-            <a href="<?php echo $about; ?>">About Us</a>
-            <a href="<?php echo $contact; ?>">Contact Us</a>
-        </div>
-
-        <div>
-            <?php
-            if (!isset($_SESSION["id"])) {
-                echo '<a href="../login.php">Login</a>
-                <a href="../signup.php">Register</a>';
-            } else {
-                echo '<a href="../userpage.php?id=' . $id . '">Account</a>';
-                echo '<a href="../LandingPage.php">Log Out</a>';
-            }
-            ?>
-        </div>
-    </nav>
-
+        if(isset($_GET["id"])){
+          $id= $_GET["id"];
+          $loginpath= "&id=".$id;
+        }else{
+          $loginpath= "";
+        }
+          ?>
+      </div>
+  </nav>
     <div class="board">
         <form action="" method="GET">
             <h1 class="bhead">CheckOut</h1>
@@ -113,38 +139,38 @@ $contact = '../contactUS.php?id=' . $id;
                         <div style="width: 45%;">
                             <label for="">First name</label>
                             <br>
-                            <input type="text" name="first" class="first" id="first" required>
+                            <input type="text" value="<?php echo $first; ?>" name="first" class="first" id="first" required>
                         </div>
                         <div style="width: 45%;">
                             <label for="">Last name</label>
                             <br>
-                            <input type="text" class="last" id="last" required>
+                            <input type="text" value="<?php echo $last; ?>" class="last" id="last" required>
                         </div>
                     </div>
                     <div class="num">
                         <label for="">Phone</label>
                         <br>
-                        <input type="phone" class="phone" id="phone" required>
+                        <input type="phone" value="<?php echo $phone; ?>" class="phone" id="phone" required>
                     </div>
                     <div class="mail">
                         <label for="">Email</label>
                         <br>
-                        <input type="email" class="email" id="email" required>
+                        <input type="email" value="<?php echo $mail; ?>" class="email" id="email" required>
                     </div>
                     <div class="cou">
                         <label for="">Country</label>
                         <br>
-                        <input type="text" class="country" id="country" required>
+                        <input type="text" value="Jordan" class="country" id="country" required>
                     </div>
                     <div class="town">
                         <label for="">City</label>
                         <br>
-                        <input type="text" class="city" id="city" required>
+                        <input type="text" value="Aqaba" class="city" id="city" required>
                     </div>
                     <div class="tall">
                         <label for="">Street</label>
                         <br>
-                        <input type="text" class="street" id="street" required>
+                        <input type="text" value="Al-kwait Street" class="street" id="street" required>
                     </div>
 
                 </div>
@@ -190,6 +216,7 @@ $contact = '../contactUS.php?id=' . $id;
                     </table>
                     <div>
 
+                        <div style="font-weight: bold; font-size:18px; margin-bottom: 5px; margin-left: 5px;">payment method: </div>
                         <div class="cash">
                             <input type="checkbox" name="cash" id="cash" required>
                             <label for="cash">cash on delivery</label>
@@ -218,7 +245,7 @@ $contact = '../contactUS.php?id=' . $id;
                 <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
             </div>
             <div class="col-3">
-                <h2>Our Website</h2>
+                <h1>Our Website</h1>
 
                 <p> You'll find that all of our products are made of organic ingredients
                     This means that our products are free of nanoparticles, parabens,

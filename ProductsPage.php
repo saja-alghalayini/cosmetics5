@@ -37,6 +37,7 @@ if (!isset($_GET["id"])) {
     $homepath = 'landingpage.php';
     $about = 'aboutUS.php';
     $contact = 'contactUS.php';
+    $pop="";
 } else {
     $shoppath = 'ProductsPage.php?id=' . $user_id;
     $categorypath = 'CategoriesPage.php?id=' . $user_id . '&';
@@ -44,7 +45,32 @@ if (!isset($_GET["id"])) {
     $homepath = 'landingpage.php?id=' . $user_id;
     $about = 'aboutUS.php?id=' . $user_id;
     $contact = 'contactUS.php?id=' . $user_id;
+
+    /* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+$querypop="SELECT * FROM cart INNER JOIN products WHERE cart.product_id=products.id  AND user_id=$id;";
+$resultpop= mysqli_query($conn, $querypop);
+$resultcheckpop = mysqli_num_rows($resultpop);
+
+$quan_sum=0;
+if($resultcheckpop > 0){
+    while($rowpop = mysqli_fetch_assoc($resultpop)){
+        $quan_sum+= $rowpop['quantity'];
+    }
 }
+
+$_SESSION["quan_sum"]= $quan_sum;
+
+
+if($_SESSION["quan_sum"]){
+$numeric=$_SESSION["quan_sum"];
+$pop='<div class="sub">'.$numeric.'</div>';
+}else{
+$pop='';
+}
+/* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -60,33 +86,41 @@ if (!isset($_GET["id"])) {
 </head>
 
 <body>
-    <nav style="display: flex;">
+<nav style="display: flex;">
+      
+            <div>
+                <img width="200px" src="./Images/logo.png">
+            </div>
 
-        <div>
-            <img width="200px" src="./Images/logo.png">
-        </div>
-
-        <div>
-            <a href="<?php echo $homepath; ?>">Home</a>
-            <a href="<?php echo $shoppath; ?>">Shop</a>
-            <a href="<?php echo $cartpath; ?>">Cart</a>
-            <a href="<?php echo $about; ?>">About Us</a>
-            <a href="<?php echo $contact; ?>">Contact Us</a>
-        </div>
-
-        <div>
-            <?php
-            if (!isset($_GET["id"])) {
+            <div>
+                <a href="<?php echo $homepath; ?>">Home</a>
+                <a href="<?php echo $shoppath; ?>">Shop</a>
+                
+                <a href="<?php echo $about; ?>">About Us</a>
+                <a href="<?php echo $contact; ?>">Contact Us</a>
+            </div>
+            
+            <div>
+              <?php
+              echo '<a class="num" href="' . $cartpath . '">
+              '.$pop.'<i class="fa-solid fa-cart-shopping"></i></a>';
+              if(!isset($_GET["id"])){
                 echo '<a href="login.php">Login</a>
-                <a href="signup.php">Register</a>';
-            } else {
-                echo '<a href="userpage.php?id=' . $user_id . '">Account</a>';
+                      <a href="signup.php">Register</a>';
+              }else{
+                echo '<a href="userpage.php?id='.$user_id.'">Account</a>';
                 echo '<a href="LandingPage.php">Log Out</a>';
-            }
-            ?>
-        </div>
+              }
 
-    </nav>
+              if(isset($_GET["id"])){
+                $id= $_GET["id"];
+                $loginpath= "&id=".$id;
+              }else{
+                $loginpath= "";
+              }
+                ?>
+            </div>
+        </nav>
 
     <div class="board">
         <h1 class="bhead">Products</h1>
@@ -110,8 +144,10 @@ if (!isset($_GET["id"])) {
                          <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row["image"] . '" alt="Product"></a>
                          <h5>' . $row["category_name"] . '</h5>
                          <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row["name"] . '</h3></a>
-                         <h3 id="price_befor">$' . $pbs . '</h3>
-                         <h3 id="price_after">$' . $row["price"] . '</h3>
+                         <div class="rearrange">
+                         <span id="price_after">' . $row["price"] . ' JD</span>
+                         <span id="price_befor">' . $pbs . ' JD</span>
+                         </div>
                          <a href=' . $cartpath . ' id="addtocart" style="background: #ef3737;">Add to Cart</a>
                         </div>';
                 }
@@ -131,7 +167,7 @@ if (!isset($_GET["id"])) {
                         <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row["image"] . '" alt="Product"></a>
                         <h5>' . $row["category_name"] . '</h5>
                         <a ihref="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row["name"] . '</h3></a>
-                        <h3 >$' . $row["price"] . '</h3>
+                        <h2 style="margin-top:30px;" class="rearrange">' . $row["price"] . ' JD</h2>
                         <a href=' . $cartpath . ' id="addtocart">Add to Cart</a>
                         </div>';
                 }
@@ -139,7 +175,7 @@ if (!isset($_GET["id"])) {
             ?>
 
         </div>
-        
+    </div>
 </body>
 <footer>
     <div id="footerdiv">
@@ -167,4 +203,8 @@ if (!isset($_GET["id"])) {
     </div>
             </div>
     </footer>
+
+    <?php 
+print_r($row);
+?>
 </html>

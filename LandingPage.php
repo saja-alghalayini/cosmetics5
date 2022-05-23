@@ -10,13 +10,40 @@ if(!isset($_GET["id"])){
   $cartpath= 'login.php';
   $about= 'aboutUS.php';
   $contact= 'contactUS.php';
+
+  $pop='';
 }else{
   $shoppath= 'ProductsPage.php?id='.$user_id;
   $categorypath= 'CategoriesPage.php?id='.$user_id.'&';
   $cartpath= 'other/cart.php?id='.$user_id;
   $about= 'aboutUS.php?id='.$user_id;
   $contact= 'contactUS.php?id='.$user_id;
+
+  /* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+$querypop="SELECT * FROM cart INNER JOIN products WHERE cart.product_id=products.id  AND user_id=$user_id;";
+$resultpop= mysqli_query($conn, $querypop);
+$resultcheckpop = mysqli_num_rows($resultpop);
+
+$quan_sum=0;
+if($resultcheckpop > 0){
+    while($rowpop = mysqli_fetch_assoc($resultpop)){
+        $quan_sum+= $rowpop['quantity'];
+    }
 }
+
+$_SESSION["quan_sum"]= $quan_sum;
+
+
+if($_SESSION["quan_sum"]){
+$numeric=$_SESSION["quan_sum"];
+$pop='<div class="sub">'.$numeric.'</div>';
+}else{
+$pop='';
+}
+/* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+
+}
+
 
 ?>
 
@@ -44,13 +71,15 @@ if(!isset($_GET["id"])){
             <div>
                 <a href="">Home</a>
                 <a href="<?php echo $shoppath; ?>">Shop</a>
-                <a href="<?php echo $cartpath; ?>">Cart</a>
+                
                 <a href="<?php echo $about; ?>">About Us</a>
                 <a href="<?php echo $contact; ?>">Contact Us</a>
             </div>
             
             <div>
               <?php
+              echo '<a class="num" href="' . $cartpath . '">
+              '.$pop.'<i class="fa-solid fa-cart-shopping"></i></a>';
               if(!isset($_GET["id"])){
                 echo '<a href="login.php">Login</a>
                       <a href="signup.php">Register</a>';
@@ -80,10 +109,10 @@ if(!isset($_GET["id"])){
     <!-- //////////////////Body//////////////////// -->
     <h1 id="categories-h1">Categories</h1>
     <div id="categories">
-        <a class="button" style="width: 20%;" href="<?php echo $categorypath.'cat_id=2' ?>">Fragrance</a>
-        <a class="button" style="width: 20%;" href="<?php echo $categorypath.'cat_id=3' ?>">Makeup</a>
-        <a class="button" style="width: 20%;" href="<?php echo $categorypath.'cat_id=1' ?>">Hair products</a>
-        <a class="button" style="width: 20%;" href="<?php echo $categorypath.'cat_id=4' ?>">Skin Care</a>
+        <a class="button" id ="cat1" style="width: 20%;" href="<?php echo $categorypath.'cat_id=2' ?>">Fragrance</a>
+        <a class="button" id ="cat2"  style="width: 20%;" href="<?php echo $categorypath.'cat_id=3' ?>">Makeup</a>
+        <a class="button" id ="cat3"  style="width: 20%;" href="<?php echo $categorypath.'cat_id=1' ?>">Hair products</a>
+        <a class="button" id ="cat4"  style="width: 20%;" href="<?php echo $categorypath.'cat_id=4' ?>">Skin Care</a>
     </div>
 
     <h1 id="discount-h1">Discount Section</h1>
@@ -101,16 +130,17 @@ if(!isset($_GET["id"])){
                       echo ' <div class="col-3">
                       <img height="250px" src="'.$row['image'].'">
                       <h4>'.$row['name'].'</h4>
-                      <p id = "price_befor">'.$pbs.'</p>
-                      <p id = "price_after">'.$row['price'].'</p>
+                      <p id = "price_befor">'.$pbs.' JD</p>
+                      <p id = "price_after">'.$row['price'].' JD</p>
                       <a href="Product.php?pro_id='.$row["id"].$loginpath.'"><button type="submit" name="sub" id="dis" class="button"> See Product</button></a>
                   </div>';
                     }
                   }
 
       ?>
+      
     </div>
-
+    <div id="seemore"><a href="<?php echo $shoppath; ?>">See More<a></div>
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -120,7 +150,9 @@ if(!isset($_GET["id"])){
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="./Images/Slider1.png" alt="First slide">
+          <div id = "img1" style="height:500px;">
+            <!-- <img class="d-block w-100" src="./Images/Slider1.png" alt="First slide" style="height:500px;" > -->
+                </div>
             <div class="carousel-caption d-none d-md-block">
               <h3 style="color: black;">Get your beloved one the best gift ever</h3>
               <p></p>
@@ -128,7 +160,9 @@ if(!isset($_GET["id"])){
           </div>
 
           <div class="carousel-item">
-            <img class="d-block w-100" src="./Images/Slider2.jpg" alt="Second slide">
+          <div id = "img2" style="height:500px;">
+            <!-- <img class="d-block w-100" src="./Images/Slider2.jpg" alt="Second slide" style="height:500px;"> -->
+            </div>
             <div class="carousel-caption d-none d-md-block">
               <h3 style="color: black;">Treat yourself with our high quality products</h3>
               <p></p>
@@ -136,7 +170,10 @@ if(!isset($_GET["id"])){
           </div>
 
         <div class="carousel-item">
-            <img class="d-block w-100" src="./Images/Slider3.jpg" alt="Third slide">
+          <div id = "img3" style="height:500px;">
+
+            <!-- <img class="d-block w-100" src="./Images/Slider3.jpg" alt="Third slide" > -->
+                </div>
             <div class="carousel-caption d-none d-md-block">
               <h3 style="color: white;">Make your world more colorful</h3>
               <p></p>
@@ -172,7 +209,7 @@ if(!isset($_GET["id"])){
             <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
         </div>
         <div class="col-3">
-        <h2>Our Website</h2>
+        <h1>Our Website</h1>
        
 <p> You'll find that all of our products are made of organic ingredients 
     This means that our products are free of nanoparticles, parabens,

@@ -1,4 +1,6 @@
 <?php
+include_once 'connect.php';
+
 if (isset($_GET["id"])) {
   $user_id = $_GET["id"];
 }
@@ -9,6 +11,8 @@ if (!isset($_GET["id"])) {
   $cartpath = 'login.php';
   $about = 'aboutUS.php';
   $contact = 'contactUs.php';
+
+  $pop="";
 } else {
   $homepath = 'landingpage.php?id=' . $user_id;
   $shoppath = 'ProductsPage.php?id=' . $user_id;
@@ -16,6 +20,30 @@ if (!isset($_GET["id"])) {
   $cartpath = 'other/cart.php?id=' . $user_id;
   $about = 'aboutUS.php?id=' . $user_id;
   $contact = 'contactUs.php?id=' . $user_id;
+
+  /* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+$querypop="SELECT * FROM cart INNER JOIN products WHERE cart.product_id=products.id  AND user_id=$user_id;";
+$resultpop= mysqli_query($conn, $querypop);
+$resultcheckpop = mysqli_num_rows($resultpop);
+
+$quan_sum=0;
+if($resultcheckpop > 0){
+    while($rowpop = mysqli_fetch_assoc($resultpop)){
+        $quan_sum+= $rowpop['quantity'];
+    }
+}
+
+$_SESSION["quan_sum"]= $quan_sum;
+
+
+if($_SESSION["quan_sum"]){
+$numeric=$_SESSION["quan_sum"];
+$pop='<div class="sub">'.$numeric.'</div>';
+}else{
+$pop='';
+}
+/* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+
 }
 ?>
 
@@ -36,32 +64,42 @@ if (!isset($_GET["id"])) {
 
 <body>
 
-  <nav style="display: flex;">
+<nav style="display: flex;">
+      
+            <div>
+                <img width="200px" src="./Images/logo.png">
+            </div>
 
-    <div>
-      <img width="200px" src="./Images/logo.png">
-    </div>
+            <div>
+                <a href="<?php echo $homepath; ?>">Home</a>
+                <a href="<?php echo $shoppath; ?>">Shop</a>
+                
+                <a href="<?php echo $about; ?>">About Us</a>
+                <a href="<?php echo $contact; ?>">Contact Us</a>
+            </div>
+            
+            <div>
+              <?php
+              echo '<a class="num" href="' . $cartpath . '">
+              '.$pop.'<i class="fa-solid fa-cart-shopping"></i></a>';
+              if(!isset($_GET["id"])){
+                echo '<a href="login.php">Login</a>
+                      <a href="signup.php">Register</a>';
+              }else{
+                echo '<a href="userpage.php?id='.$user_id.'">Account</a>';
+                echo '<a href="LandingPage.php">Log Out</a>';
+              }
 
-    <div>
-      <a href="<?php echo $homepath; ?>">Home</a>
-      <a href="<?php echo $shoppath; ?>">Shop</a>
-      <a href="<?php echo $cartpath; ?>">Cart</a>
-      <a href="<?php echo $about; ?>">About Us</a>
-      <a href="<?php echo $contact; ?>">Contact Us</a>
-    </div>
+              if(isset($_GET["id"])){
+                $id= $_GET["id"];
+                $loginpath= "&id=".$id;
+              }else{
+                $loginpath= "";
+              }
+                ?>
+            </div>
+        </nav>
 
-    <div>
-      <?php
-      if (!isset($_GET["id"])) {
-        echo '<a href="login.php">Login</a>
-                <a href="signup.php">Register</a>';
-      } else {
-        echo '<a href="userpage.php?id=' . $user_id . '">Account</a>';
-        echo '<a href="LandingPage.php">Log Out</a>';
-      }
-      ?>
-    </div>
-  </nav>
 
   <div class="container">
     <div class="row align-items-center">

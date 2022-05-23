@@ -45,6 +45,7 @@ if (!isset($_GET["id"])) {
     $homepath = 'landingpage.php';
     $about = 'aboutUS.php';
     $contact = 'contactUS.php';
+    $pop="";
 } else {
     $shoppath = 'ProductsPage.php?id=' . $id;
     $categorypath = 'CategoriesPage.php?id=' . $id . '&';
@@ -52,6 +53,30 @@ if (!isset($_GET["id"])) {
     $homepath = 'landingpage.php?id=' . $id;
     $about = 'aboutUS.php?id=' . $id;
     $contact = 'contactUS.php?id=' . $id;
+
+    /* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+$querypop="SELECT * FROM cart INNER JOIN products WHERE cart.product_id=products.id  AND user_id=$id;";
+$resultpop= mysqli_query($conn, $querypop);
+$resultcheckpop = mysqli_num_rows($resultpop);
+
+$quan_sum=0;
+if($resultcheckpop > 0){
+    while($rowpop = mysqli_fetch_assoc($resultpop)){
+        $quan_sum+= $rowpop['quantity'];
+    }
+}
+
+$_SESSION["quan_sum"]= $quan_sum;
+
+
+if($_SESSION["quan_sum"]){
+$numeric=$_SESSION["quan_sum"];
+$pop='<div class="sub">'.$numeric.'</div>';
+}else{
+$pop='';
+}
+/* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+
 }
 ?>
 
@@ -68,34 +93,41 @@ if (!isset($_GET["id"])) {
 </head>
 
 <body>
-    <nav style="display: flex;">
+<nav style="display: flex;">
+      
+            <div>
+                <img width="200px" src="./Images/logo.png">
+            </div>
 
-        <div>
-            <img width="200px" src="./Images/logo.png">
-        </div>
-
-        <div>
-            <a href="<?php echo $homepath; ?>">Home</a>
-            <a href="<?php echo $shoppath; ?>">Shop</a>
-            <a href="<?php echo $cartpath; ?>">Cart</a>
-            <a href="<?php echo $about; ?>">About Us</a>
-            <a href="<?php echo $contact; ?>">Contact Us</a>
-        </div>
-
-        <div>
-            <?php
-            if (!isset($_GET["id"])) {
+            <div>
+                <a href="<?php echo $homepath; ?>">Home</a>
+                <a href="<?php echo $shoppath; ?>">Shop</a>
+                
+                <a href="<?php echo $about; ?>">About Us</a>
+                <a href="<?php echo $contact; ?>">Contact Us</a>
+            </div>
+            
+            <div>
+              <?php
+              echo '<a class="num" href="' . $cartpath . '">
+              '.$pop.'<i class="fa-solid fa-cart-shopping"></i></a>';
+              if(!isset($_GET["id"])){
                 echo '<a href="login.php">Login</a>
-                <a href="signup.php">Register</a>';
-            } else {
-                echo '<a href="userpage.php?id=' . $id . '">Account</a>';
+                      <a href="signup.php">Register</a>';
+              }else{
+                echo '<a href="userpage.php?id='.$id.'">Account</a>';
                 echo '<a href="LandingPage.php">Log Out</a>';
-            }
-            ?>
-        </div>
+              }
 
-    </nav>
-
+              if(isset($_GET["id"])){
+                $id= $_GET["id"];
+                $loginpath= "&id=".$id;
+              }else{
+                $loginpath= "";
+              }
+                ?>
+            </div>
+        </nav>
     <div class="board">
 
         <h1 class="bhead">Category: <?php echo $cat_name['category_name'] ?></h1>
@@ -114,8 +146,10 @@ if (!isset($_GET["id"])) {
                     echo '<div>
                     <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row['image'] . '" alt="Product"></a>
                     <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row['name'] . '</h3></a>
-                    <p id = "price_befor">' . $pbs . '</p>
-                    <h3 id="price_after">$' . $row['price'] . '</h3>
+                    <div class="rearrange">
+                    <span id = "price_befor">' . $pbs . ' JD</span>
+                    <span id="price_after">' . $row['price'] . ' JD</span>
+                    </div>
                     <a href="' . $path . '" id="addtocart" style="background-color: #ef3737;">Add to Cart</a>
                     </div>';
                 }
@@ -133,7 +167,7 @@ if (!isset($_GET["id"])) {
                     echo '<div>
                     <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><img src="' . $row['image'] . '" alt="Product"></a>
                     <a href="Product.php?pro_id=' . $row["id"] . $loginpath . '"><h3>' . $row['name'] . '</h3></a>
-                    <h3>$' . $row['price'] . '</h3>
+                    <h2 style="margin-top:30px;"  class="rearrange">' . $row['price'] . ' JD</h2>
                     <a href="' . $path . '" id="addtocart">Add to Cart</a>
                     </div>';
                 }
@@ -159,7 +193,7 @@ if (!isset($_GET["id"])) {
             <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
         </div>
         <div class="col-3">
-        <h2>Our Website</h2>
+        <h1>Our Website</h1>
        
 <p> You'll find that all of our products are made of organic ingredients 
     This means that our products are free of nanoparticles, parabens,

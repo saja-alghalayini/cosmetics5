@@ -140,41 +140,41 @@ $resultcheck = mysqli_num_rows($run);
                 <hr>
                 <form  method="post">
                     <input type="hidden" value="<?php echo $pro_id?>" name="proid">
-                    <label>Category ID:</label>
-                    <input type="text" value="<?php echo $newcatid?>" name="newcatid" required>
-                    <label>Name:</label>
-                    <input type="text" value="<?php echo $newname?>" name="newname" required>
-                    <label>Price:</label>
-                    <input type="text" value="<?php echo $newprice?>" name="newprice" required><br>
-                    <label>Sale Status:</label>
-                    <input type="text" value="<?php echo $newsales?>" name="newsales" required>
-                    <label>Sale Percentage:</label>
-                    <input type="text" value="<?php echo $newsalep?>" name="newsalep" required>
-                    <label>Description:</label>
-                    <input type="text" value="<?php echo $newdescription?>" name="newdescription" required><br>
-                    <label>Status:</label>
-                    <input type="text" value="<?php echo $newstuatus?>" name="newstuatus" required><br>
+                    <label class="col-2">Category ID:</label>
+                    <input class="col-5" type="text" value="<?php echo $newcatid?>" name="newcatid" required><br>
+                    <label class="col-2">Name:</label>
+                    <input class="col-5" type="text" value="<?php echo $newname?>" name="newname" required><br>
+                    <label class="col-2">Price:</label>
+                    <input class="col-5" type="text" value="<?php echo $newprice?>" name="newprice" required><br>
+                    <label class="col-2">Sale Status:</label>
+                    <input class="col-5" type="text" value="<?php echo $newsales?>" name="newsales" required><br>
+                    <label class="col-2">Sale Percentage:</label>
+                    <input class="col-5" type="text" value="<?php echo $newsalep?>" name="newsalep" required><br>
+                    <label class="col-2">Description:</label>
+                    <input class="col-5" type="text" value="<?php echo $newdescription?>" name="newdescription" required><br>
+                    <label class="col-2">Status:</label>
+                    <input class="col-5" type="text" value="<?php echo $newstuatus?>" name="newstuatus" required><br>
                     <input type="submit" value="Save" name="saveeditpro">
                 </form>
     </div>
     <div id="adddiv" style="display: <?php echo $display1?>;">
                 <form action="?" method="post" enctype="multipart/form-data">
-                    <label>Category ID:</label>
-                    <input type="text"  name="newpcatid" required>
-                    <label>Name:</label>
-                    <input type="text" name="newpname" required>
-                    <label>Price:</label>
-                    <input type="text" name="newpprice" required>
-                    <label>Sale Status:</label>
-                    <input type="text" name="newpsales" required>
-                    <label>Sale Percentage:</label>
-                    <input type="text" name="newpsalep" required>
-                    <label>Description:</label>
-                    <input type="text" name="newpdescription" required>
-                    <label>Image:</label>
-                    <input type="file" name="file" id="file" required>
-                    <label>Status:</label>
-                    <input type="text" name="newpstuatus" required>
+                    <label class="col-2">Category ID:</label>
+                    <input class="col-5" type="text"  name="newpcatid" required><br>
+                    <label class="col-2">Name:</label>
+                    <input class="col-5" type="text" name="newpname" required><br>
+                    <label class="col-2">Price:</label>
+                    <input class="col-5" type="text" name="newpprice" required><br>
+                    <label class="col-2">Sale Status:</label>
+                    <input class="col-5" type="text" name="newpsales" required><br>
+                    <label class="col-2">Sale Percentage:</label>
+                    <input class="col-5" type="text" name="newpsalep" required><br>
+                    <label class="col-2">Description:</label>
+                    <input class="col-5" type="text" name="newpdescription" required><br>
+                    <label class="col-2">Image:</label>
+                    <input class="col-5" type="file" name="file" id="file" required><br>
+                    <label class="col-2">Status:</label>
+                    <input class="col-5" type="text" name="newpstuatus" required><br>
                     <input type="submit" value="Add" name="addnewpro">
                 </form>
     </div>

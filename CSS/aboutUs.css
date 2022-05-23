@@ -64,11 +64,12 @@ body{
     }
     
     nav a{
-        color: #063e42;
-        text-decoration: none;
-        font-family: sans-serif;
-        margin: 20px;
-    }
+      color: #063e42;
+      text-decoration: none;
+      font-family: sans-serif;
+      margin: 20px;
+      font-size: 20px;
+  }
 
     #footerdiv{
       background-color: #000;
@@ -104,3 +105,16 @@ body{
       flex: 0 0 25%;
       max-width: 25%;
   }
+
+  .num{
+    position: relative;
+}
+
+.sub{
+    position: absolute;
+    top: -6px;
+    right: 24px;
+    padding: 5px;
+    color: #063e42;
+    /* background-color: #063e42; */
+}

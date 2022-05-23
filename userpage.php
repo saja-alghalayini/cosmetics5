@@ -3,6 +3,30 @@ include_once 'connect.php';
 if(isset($_GET["id"])){
   $user_id= $_GET["id"];
 }
+$imgsrc="./img/userpic.png";
+
+if(isset($_POST['saveimg'])){
+  $file_name = $_FILES["file"]["name"];
+  $file_type = $_FILES["file"]["type"];
+  $file_size = $_FILES["file"]["size"];
+  $file_tem = $_FILES["file"]["tmp_name"];
+  $file_store = "./Images/usersImages/".$file_name;
+  move_uploaded_file($file_tem, $file_store);
+
+  $imgsql="UPDATE user SET user_img='$file_store' WHERE user_id=$user_id";
+  mysqli_query($conn, $imgsql);
+}
+
+$imgquery="SELECT user_img FROM user WHERE user_id=$user_id;";
+$imgresult= mysqli_query($conn, $imgquery);
+$imgresultcheck = mysqli_num_rows($imgresult);
+if ($imgresultcheck > 0) {
+  while ($imgrow = mysqli_fetch_assoc($imgresult)) {
+    if(!empty($imgrow['user_img'])){
+      $imgsrc= $imgrow['user_img'];
+    }
+  }
+}
 
 
 if(isset($_POST['newinfo'])){
@@ -37,6 +61,29 @@ if(!isset($_GET["id"])){
   $about= 'aboutUS.php?id='.$id;
   $contact= 'contactUS.php?id='.$id;
 }
+
+/* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
+$querypop="SELECT * FROM cart INNER JOIN products WHERE cart.product_id=products.id  AND user_id=$id;";
+$resultpop= mysqli_query($conn, $querypop);
+$resultcheckpop = mysqli_num_rows($resultpop);
+
+$quan_sum=0;
+if($resultcheckpop > 0){
+    while($rowpop = mysqli_fetch_assoc($resultpop)){
+        $quan_sum+= $rowpop['quantity'];
+    }
+}
+
+$_SESSION["quan_sum"]= $quan_sum;
+
+
+if($_SESSION["quan_sum"]){
+$numeric=$_SESSION["quan_sum"];
+$pop='<div class="sub">'.$numeric.'</div>';
+}else{
+$pop='';
+}
+/* *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop*  *pop* */
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +111,7 @@ nav a{
     text-decoration: none;
     font-family: sans-serif;
     margin: 20px;
+    font-size: 22px;
 }
       #editinfo{
         border: none;
@@ -75,33 +123,41 @@ nav a{
 
 <nav style="display: flex;">
       
-      <div>
-          <img width="200px" src="./Images/logo.png">
-      </div>
+            <div>
+                <img width="200px" src="./Images/logo.png">
+            </div>
 
-      <div>
-          <a href="<?php echo $homepath; ?>">Home</a>
-          <a href="<?php echo $shoppath; ?>">Shop</a>
-          <a href="<?php echo $cartpath; ?>">Cart</a>
-          <a href="<?php echo $about; ?>">About Us</a>
-          <a href="<?php echo $contact; ?>">Contact Us</a>
-      </div>
-      
-      <div>
-        <?php
-        if(!isset($_GET["id"])){
-          echo '<a href="login.php">Login</a>
-                <a href="signup.php">Register</a>';
-        }else{
-          echo '<a href="userpage.php?id='.$user_id.'">Account</a>';
-          echo '<a href="LandingPage.php">Log Out</a>';
-        }
-          ?>
-      </div>
-  
-  </nav>
+            <div>
+                <a href="<?php echo $homepath; ?>">Home</a>
+                <a href="<?php echo $shoppath; ?>">Shop</a>
+                
+                <a href="<?php echo $about; ?>">About Us</a>
+                <a href="<?php echo $contact; ?>">Contact Us</a>
+            </div>
+            
+            <div>
+              <?php
+              echo '<a class="num" href="' . $cartpath . '">
+              '.$pop.'<i class="fa-solid fa-cart-shopping"></i></a>';
+              if(!isset($_GET["id"])){
+                echo '<a href="login.php">Login</a>
+                      <a href="signup.php">Register</a>';
+              }else{
+                echo '<a href="userpage.php?id='.$user_id.'">Account</a>';
+                echo '<a href="LandingPage.php">Log Out</a>';
+              }
 
-    <section class="vh-100" style="background-color: #f4f5f7;">
+              if(isset($_GET["id"])){
+                $id= $_GET["id"];
+                $loginpath= "&id=".$id;
+              }else{
+                $loginpath= "";
+              }
+                ?>
+            </div>
+        </nav>
+
+        <section class="vh-100" style="background-color: #f4f5f7;">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
           <?php
@@ -142,14 +198,24 @@ nav a{
                 echo "<h5 style='color:red; text-align:center;'> The password you entered is wrong.</h5>";
                 }
             }
+            if(isset($_GET["chimg"])){
+              echo '
+              <div class="container" style="text-align:center;">
+              <form action="?id='.$user_id.'" method="post" enctype="multipart/form-data">
+                  <label>Upload Image:</label>
+                  <input type="file" name="file" id="file" required>
+                  <input type="submit" value="Change Image" name="saveimg" class="btn btn-primary">
+              </form>
+              </div>';
+            }
             ?>
             <div class="col col-lg-6 mb-4 mb-lg-0">
               <div class="card mb-3" style="border-radius: .5rem;">
                 <div class="row g-0">
                   <div class="col-md-4 gradient-custom text-center text-white"
                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                    <img src="./img/userpic.png"
-                      alt="Avatar" class="img-fluid "  />
+                    <a href="userpage.php?id=<?php echo $user_id ?>&chimg=1"><img src="<?php echo $imgsrc ?>"
+                      alt="Avatar" class="img-fluid " style="border-radius:100%;" /><p id="uimg">Upload Image</p></a>
                     <h5><?php echo $info['first_name'].' '.$info['last_name'];?></h5>
                     <div class="chang1" id="chang1">
                       <form method="post">
@@ -199,7 +265,7 @@ nav a{
         </div>
         <div class="col-3">
             <h1 style="text-align: center;">Stay In Touch</h1><br>
-            <h2 style="text-align: center;"></h2>
+
             <p style="text-align: center;" >
             <a href="https://www.facebook.com/sephora/" target="_blank" ><i class="fa-brands fa-facebook"style="display: inline;"></a></i>
             <a href="https://www.instagram.com/sephora/" target="_blank" ><i class="fa-brands fa-instagram"style="display: inline;"></a></i>
@@ -208,7 +274,7 @@ nav a{
             <p style="text-align: center;">copyright <i class="fa-solid fa-copyright"></i> 2022 BeautyCare</p>
         </div>
         <div class="col-3">
-        <h2>Our Website</h2>
+        <h1>Our Website</h1>
        
 <p> You'll find that all of our products are made of organic ingredients 
     This means that our products are free of nanoparticles, parabens,
