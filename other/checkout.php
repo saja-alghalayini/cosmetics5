@@ -116,8 +116,8 @@ if ($result6->num_rows > 0) {
         //   echo '<a href="login.php">Login</a>
         //         <a href="signup.php">Register</a>';
         // }else{
-          echo '<a href="userpage.php?id='.$_SESSION["id"].'">Account</a>';
-          echo '<a href="LandingPage.php">Log Out</a>';
+          echo '<a href="../userpage.php?id='.$_SESSION["id"].'">Account</a>';
+          echo '<a href="../LandingPage.php">Log Out</a>';
         // }
 
         if(isset($_GET["id"])){

@@ -132,7 +132,7 @@ $contact= '../contactUS.php?id='.$id;
                       <a href="signup.php">Register</a>';
             } else {
                 echo '<a href="../userpage.php?id=' . $id . '">Account</a>';
-                echo '<a href="LandingPage.php">Log Out</a>';
+                echo '<a href="../LandingPage.php">Log Out</a>';
             }
 
             if (isset($_GET["id"])) {

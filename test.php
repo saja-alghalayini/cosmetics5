@@ -9,10 +9,13 @@
 <body>
 
     <?php  
-        for($t=0; $t < 0; $t++){}
-        echo "\$t: ".$t;
+        // for($t=0; $t < 0; $t++){}
+        // echo "\$t: ".$t;
+        if(!isset($_SESSION["sa"]))
+        echo true;
     ?>
     
+    ec
 
     <!-- <script>
         let var1 = prompt("enter your number: ");
