@@ -15,9 +15,10 @@ nav{
 nav a{
     color: #063e42;
     text-decoration: none;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     margin: 20px;
     font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .board{
@@ -25,12 +26,14 @@ nav a{
     width: 75%;
     margin: 30px auto;
     padding: 30px 60px;
+    font-family: 'Times New Roman', Times, serif;
+
 }
 
 table{
     border-collapse: collapse;
     /* margin: auto; */
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     width: 100%;
 }
 
@@ -55,7 +58,7 @@ td{
     background-color: #17868e;
     border-radius: 5px;
     color: white;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     user-select: none;
     cursor: pointer;
     margin: auto;
@@ -113,5 +116,4 @@ footer img {
     right: 24px;
     padding: 5px;
     color: #063e42;
-    /* background-color: #063e42; */
 }

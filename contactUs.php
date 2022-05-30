@@ -173,7 +173,7 @@ $pop='';
     
           <!--Google map-->
           <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 400px">
-            <iframe src="https://maps.google.com/maps?q=Manhatan&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
+            <iframe src="https://maps.google.com/maps?q=aqaba&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
               style="border:0" allowfullscreen></iframe>
           </div>
           <!-- Buttons-->
@@ -182,14 +182,14 @@ $pop='';
               <a class="btn-floating blue accent-1">
                 <i class="fas fa-map-marker-alt"></i>
               </a>
-              <p>New York, 94126</p>
-              <p class="mb-md-0">United States</p>
+              <p>Aqaba, 94126</p>
+              <p class="mb-md-0">Jordan</p>
             </div>
             <div class="col-md-4">
               <a class="btn-floating blue accent-1">
                 <i class="fas fa-phone"></i>
               </a>
-              <p>+ 01 234 567 89</p>
+              <p>+ 996 277 567 89</p>
               <p class="mb-md-0">Mon - Fri, 8:00-22:00</p>
             </div>
             <div class="col-md-4">

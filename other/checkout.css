@@ -15,7 +15,7 @@ nav{
 nav a{
     color: #063e42;
     text-decoration: none;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     margin: 20px;
     font-size: 20px;
 }
@@ -73,6 +73,7 @@ nav a{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .num{
@@ -160,7 +161,7 @@ td{
 .cash{
     display: flex;
     align-items: center;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     user-select: none;
 }
 
@@ -183,7 +184,7 @@ td{
     transform: translate(-50%, -50%);
     color: white;
     font-size: 22px;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
 }
 
 #footerdiv{

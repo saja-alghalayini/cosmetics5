@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 
     $number = "/^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})?[-.\\s]?([0-9]{4})$/";
-    if (preg_match($number, $mobile)) {
+    if (strlen($mobile) <= 14 &&strlen($mobile) >= 10) {
         $checkMobile = true;
     } else {
         $c = '<style type="text/css">
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
             display: inline;
         }
         </style>';
-        $checkdatee = false;
+        $checkdate = false;
     }
 
 
@@ -175,10 +175,12 @@ if (isset($_POST['submit'])) {
     if ($checkFN && $checkMobile && $checkEmaile && $checkdate && $checkpass && $checkco) {
 
         $reg = '<style type="text/css">
-  #reg{
+  #reg, .pop{
       display: block;
   }
   </style>';
+
+  $pass=md5($pass);
         $sql = "INSERT INTO user (first_name, last_name, email,pass,mobile,datee ) 
   VALUES ('$fname', '$lname', '$email', '$pass', '$mobile','$date');";
 
@@ -224,7 +226,62 @@ setTimeout(() => {
     <link rel="stylesheet" href="./CSS/signup.css">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
     <script src="https://kit.fontawesome.com/ccfa87eec6.js" crossorigin="anonymous"></script>
+    <style>
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
 
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.container {
+  /* background-color: #f1f1f1; */
+  padding: 20px;
+}
+
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+.invalid {
+  color: red;
+  font-size: 11px !important;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+</style>
     <title> sign up form</title>
 
 
@@ -272,7 +329,7 @@ setTimeout(() => {
                             <label for="Mobile">Mobile Numde</label>
                             <input name='Mobile' id="Mobile" type="number" required="true" value="<?php if(isset($x2)) echo $x2;?>">
                             <img src="./img/icon-error (1).svg" class="error-icon" alt="" id='i5'>
-                            <p class="error-text" id='five'>Mobile Numde must be 14 diget</p>
+                            <p class="error-text" id='five'>Mobile Numde must btween 10-14 diget</p>
                             <?php if (isset($c)) {
                                 echo $c;
                             } ?>
@@ -306,6 +363,13 @@ setTimeout(() => {
                             <p class="error-text" id='eight4'>password must contain at least 1 special character</p>
                             <p class="error-text" id='eight5'>password can not contain a space</p>
                             <p class="error-text" id='eight6'>password lenght should be 8 or more</p>
+                            <div id="message">
+  <h3 style="font-size: 11px;">Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
                             <?php if (isset($f)) {
                                 echo $f;
                             } ?>
@@ -320,8 +384,9 @@ setTimeout(() => {
                             } ?>
                         </div>
                         <input type="submit" value='Sign Up' name='submit' id='signup'>
-                        <p id='reg'> successfully registered
-                        <p>
+                        <div class="pop">
+                            <p id='reg'> successfully registered</p>
+                        </div>
                             <?php if (isset($reg)) {
                                 echo $reg;
                             } ?>
@@ -359,5 +424,58 @@ setTimeout(() => {
     </div>
             </div>
     </footer>
+
+    <script>
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+myInput.onkeyup = function() {
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
 </body>
 </html>

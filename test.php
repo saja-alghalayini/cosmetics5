@@ -1,30 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<?php
 
-    <?php  
-        // for($t=0; $t < 0; $t++){}
-        // echo "\$t: ".$t;
-        if(!isset($_SESSION["sa"]))
-        echo true;
-    ?>
-    
-    ec
+class SixGrade {
+  public $name;
+  private $age=13;
+  public $eyeColor;
+  
+  public function __construct($name,$eyeColor){
+    $this->name = $name;
+    $this->eyeColor = $eyeColor;
+   echo $this->get_name(). '<br>';
+   echo $this->get_age(). "<br>";
+   echo $this->get_eyeColor(). '<br>';
+  }
 
-    <!-- <script>
-        let var1 = prompt("enter your number: ");
-        var1 = parseInt(var1);
-        if(var1%2){
-          console.log("number is odd");
-        }else{
-            console.log("number is even");
-        }
-    </script> -->
-</body>
-</html>
+  public function  get_name (){
+    return  $this->name;
+  }
+  public function get_age(){
+    return $this->age;
+  }
+  public function get_eyeColor(){
+    return $this->eyeColor;
+  }
+}
+
+
+
+
+
+echo "hadi info:".'<br>';
+$hadi = new SixGrade('hadi','black');
+
+echo "duaa info:".'<br>';
+$Dua = new SixGrade('Dua','Green');
+
+echo "dyar info:".'<br>';
+$dyar = new SixGrade('dyar','Green');
+
+?>

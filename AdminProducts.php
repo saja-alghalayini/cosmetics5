@@ -91,7 +91,7 @@ if(isset($_POST["addnewpro"])){
 }
 
 
-$query= "SELECT * FROM products;";
+$query= "SELECT * FROM products ORDER BY id DESC;";
 $run= mysqli_query($conn, $query);
 $resultcheck = mysqli_num_rows($run);
 ?>

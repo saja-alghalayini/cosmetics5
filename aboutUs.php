@@ -180,7 +180,7 @@ $pop='';
             <!-- was edited -->
             <div class="col-xl-4 col-sm-6 mb-5">
               <div class="bg-white rounded shadow-sm py-5 px-4"><img src="./img/bahaa.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Baha'a Aldeen</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <h5 class="mb-0">Baha'a Aldeen</h5><span class="small text-uppercase text-muted">CEO - Founder <br> Back-end Expert(The PERSON for hardest tasks)</span>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://www.facebook.com/bahaa.aldeen.3348" target="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                   <li class="list-inline-item"><a href="https://github.com/bahaa12edeen" target="_blank" class="social-link"><i class="fa fa-github"></i></a></li>
@@ -194,7 +194,8 @@ $pop='';
             <!-- Team item-->
             <div class="col-xl-4 col-sm-6 mb-5">
               <div class="bg-white rounded shadow-sm py-5 px-4"><img src="./img/gufran.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Ghufran Almomani</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <h5 class="mb-0">Ghufran Almomani</h5><span class="small text-uppercase text-muted">CEO - Founder  <br>Our Creative Designer
+</span>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://web.facebook.com/ghufran.almomani" target="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                   <li class="list-inline-item"><a href="https://github.com/ghufranalmomani/" target="_blank" class="social-link"><i class="fa fa-github"></i></a></li>
@@ -208,7 +209,7 @@ $pop='';
             <!-- Team item-->
             <div class="col-xl-4 col-sm-6 mb-5">
               <div class="bg-white rounded shadow-sm py-5 px-4"><img src="./img/Roaa.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Ro'a Yaseen</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <h5 class="mb-0">Ro'a Yaseen</h5><span class="small text-uppercase text-muted">CEO - Founder <br> Scrum Master </span>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://web.facebook.com/roaa.yaseen.9/" target="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                   <li class="list-inline-item"><a href="https://github.com/roayas" target="_blank" class="social-link"><i class="fa fa-github"></i></a></li>
@@ -223,7 +224,7 @@ $pop='';
 
             <div class="col-xl-4 col-sm-6 mb-5">
               <div class="bg-white rounded shadow-sm py-5 px-4"><img src="./img/sara.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Sara Kteifan</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <h5 class="mb-0">Sara Kteifan</h5><span class="small text-uppercase text-muted">CEO - Founder <br>Product Owner</span>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://www.facebook.com/sara.kteifan" target="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                   <li class="list-inline-item"><a href="https://github.com/SaraKteifan" target="_blank" class="social-link"><i class="fa fa-github"></i></a></li>
@@ -237,7 +238,7 @@ $pop='';
             <!-- Team item-->
             <div class="col-xl-4 col-sm-6 mb-5 ">
               <div class="bg-white rounded shadow-sm py-5 px-4"><img src="./img/sajaa.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">Saja Al Ghalayini </h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <h5 class="mb-0">Saja Al Ghalayini </h5><span class="small text-uppercase text-muted">CEO - Founder <br>Data Base Expert</span>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://www.facebook.com/Saja.AlGhalayini" target="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                   <li class="list-inline-item"><a href="https://github.com/saja-alghalayini" target="_blank" class="social-link"><i class="fa fa-github"></i></a></li>

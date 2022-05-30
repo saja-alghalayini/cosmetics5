@@ -150,7 +150,7 @@ $resultcheck = mysqli_num_rows($run);
                 <th>Last NAME</th>
                 <th>Email</th>
                 <th>Mobile</th>
-                <th>Password</th>
+
                 <th>Is Admin</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -167,7 +167,7 @@ $resultcheck = mysqli_num_rows($run);
                     <td>'.$row['last_name'].'</td>
                     <td>'.$row['email'].'</td>
                     <td>'.$row['mobile'].'</td>
-                    <td>'.$row['pass'].'</td>
+                    
                     <td>'.$row['is_admin'].'</td>
                     <td>
                     <form method="post">
@@ -181,8 +181,7 @@ $resultcheck = mysqli_num_rows($run);
                     <input type="submit" value="Delete" name="deleteuser">
                     </form>
                     </td>
-                </tr>
-                ';
+                </tr>';
                 }
                 }
                 echo '</table> <br><br>';

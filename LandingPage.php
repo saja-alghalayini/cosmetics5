@@ -105,8 +105,84 @@ $pop='';
         </div>
     </header>
 
+    <div class="arr">
+        <i class="fa-solid fa-angles-down down"></i>
+    </div>
+
 
     <!-- //////////////////Body//////////////////// -->
+<!-- ////////////Features///////////////////// -->
+
+<div class="py-5 service-24">
+    <div>
+      <h2 style= "text-align: center; margin-bottom: 50px;">What Services Do We Provide?</h2>
+        <!-- Row -->
+        <div class="row wrap-service-24" style="width: 90%;margin: auto;">
+            <!-- Column -->
+            <div class="col-lg-2 col-md-6">
+                <div class="card rounded card-shadow border-0 mb-4">
+                    <a class="card-hover py-4 text-center d-block rounded"> 
+												<span class="bg-success-grediant"><i class="fa-solid fa-gift"></i></span>
+                        <h6 class="ser-title">ECO-FRIENDLY PACKGING</h6>
+                    </a>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-2 col-md-6">
+                <div class="card card-shadow border-0 mb-4">
+                    <a  class="card-hover py-4 text-center d-block rounded"> 
+												<span class="bg-success-grediant"><i class="fa-solid fa-truck-fast"></i></span>
+                        <h6 class="ser-title">FREE SHIPPING</h6>
+                    </a>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-2 col-md-6">
+                <div class="card card-shadow border-0 mb-4">
+                    <a class="card-hover py-4 text-center d-block rounded"> 
+												<span class="bg-success-grediant"><i class="fa-solid fa-money-bill"></i></span>
+                        <h6 class="ser-title">MONEY-BACK GUARANTEE</h6>
+                    </a>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-2 col-md-6">
+                <div class="card card-shadow border-0 mb-4">
+                    <a  class="card-hover py-4 text-center d-block rounded"> 
+												<span class="bg-success-grediant"><i class="fa-solid fa-percent"></i></span>
+                        <h6 class="ser-title">SEASON SALE</h6>
+                    </a>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-2 col-md-6">
+                <div class="card card-shadow border-0 mb-4">
+                    <a class="card-hover py-4 text-center d-block rounded"> 
+												<span class="bg-success-grediant"><i class="fa-solid fa-leaf"></i></i></span>
+                        <h6 class="ser-title">ORGANIC INGREDIENTS</h6>
+                    </a>
+                </div>
+            </div>
+            <!-- Column -->
+           
+            
+            
+						
+        </div>
+    </div>
+</div>
+
+
+<!-- //////////////////////////////// -->
+
+
+
+
+  
     <h1 id="categories-h1">Categories</h1>
     <div id="categories">
         <a class="button" id ="cat1" style="width: 20%;" href="<?php echo $categorypath.'cat_id=2' ?>">Fragrance</a>
@@ -114,6 +190,7 @@ $pop='';
         <a class="button" id ="cat3"  style="width: 20%;" href="<?php echo $categorypath.'cat_id=1' ?>">Hair products</a>
         <a class="button" id ="cat4"  style="width: 20%;" href="<?php echo $categorypath.'cat_id=4' ?>">Skin Care</a>
     </div>
+     
 
     <h1 id="discount-h1">Discount Section</h1>
     <div id="discount" class="container">
@@ -141,6 +218,9 @@ $pop='';
       
     </div>
     <div id="seemore"><a href="<?php echo $shoppath; ?>">See More<a></div>
+
+ 
+
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -190,6 +270,9 @@ $pop='';
         </a>
       </div>
     </div>
+
+
+      
     <!-- //////////////////Footer//////////////////// -->
 
     

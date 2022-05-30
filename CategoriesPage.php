@@ -150,7 +150,7 @@ $pop='';
                     <span id = "price_befor">' . $pbs . ' JD</span>
                     <span id="price_after">' . $row['price'] . ' JD</span>
                     </div>
-                    <a href="' . $path . '" id="addtocart" style="background-color: #ef3737;">Add to Cart</a>
+                    <a href="' . $path . '" id="addtocart">Add to Cart</a>
                     </div>';
                 }
                 $query = "SELECT * FROM products INNER JOIN categories WHERE products.category_id = categories.category_id AND products.category_id=$cat_id AND sale_status=0";;

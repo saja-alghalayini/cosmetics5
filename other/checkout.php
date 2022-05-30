@@ -101,7 +101,7 @@ if ($result6->num_rows > 0) {
           <img width="200px" src="./Images/logo.png">
       </div>
 
-      <div>
+      <div style="font-family: 'Times New Roman', Times, serif;">
           <a href="<?php echo $homepath; ?>">Home</a>
           <a href="<?php echo $shoppath; ?>">Shop</a>
           
@@ -176,7 +176,7 @@ if ($result6->num_rows > 0) {
                 </div>
                 <div class="side2">
                     <h2 style="text-align: center;">YOUR ORDER</h2>
-                    <table style="font-family: sans-serif;">
+                    <table>
                         <tr>
                             <th style="text-align: left;">Product</th>
                             <th>Quantity</th>
@@ -218,7 +218,7 @@ if ($result6->num_rows > 0) {
 
                         <div style="font-weight: bold; font-size:18px; margin-bottom: 5px; margin-left: 5px;">payment method: </div>
                         <div class="cash">
-                            <input type="checkbox" name="cash" id="cash" required>
+                            <input type="checkbox" name="cash" id="cash" checked required>
                             <label for="cash">cash on delivery</label>
                         </div>
 

@@ -6,6 +6,8 @@ if (isset($_POST['submit'])){
     $Email =$_POST['email'];
     $Password= $_POST['Password'];
 
+    $Password=md5($Password);
+
     $sql1="SELECT * FROM user;";
     $result= mysqli_query($conn , $sql1);
     $result_check= mysqli_num_rows($result);

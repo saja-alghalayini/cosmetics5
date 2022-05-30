@@ -148,7 +148,7 @@ $pop='';
                          <span id="price_after">' . $row["price"] . ' JD</span>
                          <span id="price_befor">' . $pbs . ' JD</span>
                          </div>
-                         <a href=' . $cartpath . ' id="addtocart" style="background: #ef3737;">Add to Cart</a>
+                         <a href=' . $cartpath . ' id="addtocart">Add to Cart</a>
                         </div>';
                 }
             }
